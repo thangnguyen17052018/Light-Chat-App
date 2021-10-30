@@ -1,0 +1,512 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {/* có tính năng flexbox */
+    display: flex; /* phần tử chính thiết lập là phần tử chứa */ /* mặc định hướng chính nằm ngang, phần tử sắp xếp từ trái qua phải */
+    align-items: center; /* phẩn tử con đẩy vào giữa hàng theo hướng vuông góc */
+    justify-content: center; /* đẩy các phần tử con vào giữa hướng chính */
+    min-height: 100vh; /* nếu chiều cao của trình duyệt là 900px thì 1vh = 9px */
+    background: #78bdb7/* #f7f7f7 */;
+}   
+
+.wrapper {
+    background-color: #fff;
+    width: 450px;
+    border-radius: 16px; /* bo form */
+    box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.1), /* ngang - doc - nhoe - kich thuoc - color */
+    /* multiple shadow */ 0 32px 64px -48px rgba(0, 0, 0, 0.5); /* r - g - b - a(opacity) */
+}
+
+/* Register Form */
+.form {
+    padding: 25px 30px;
+}
+
+.form header {
+    font-size: 25px;
+    font-weight: 600; /* độ đậm */
+    padding-bottom: 10px;
+    /* Tạo 1 gradient border */
+    border-bottom: 1.5px solid transparent;
+    border-image: linear-gradient(to left, #c5dbdb, #03a8ad);
+    border-image-slice: 1;
+    /* ##################### */
+    color: #f56c43;
+}
+
+.form form {
+    margin: 20px 0;
+}
+
+.form form .error-text {
+    color: #721c24;
+    background-color: #f8d7da;
+    padding: 8px 10px;
+    text-align: center;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    border: 1px solid #d42b3c;
+    display: none;
+}
+
+.form form .field {
+    display: flex;
+    flex-direction: column; /* chuyển trục main axis thành chiều dọc -> hiển thị theo dạng cột */
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.form form .field i {
+    position: absolute;
+    right: 15px;
+    color: #ccc;
+    top: 70%;
+    transform: translateY(-50%); /* sử dụng trục Y -50% */
+    cursor: pointer;
+}
+
+.form form .field i.active::before { /* chèn nội dung vào trước element i */
+    content: "\f070"; /* unicode của icon trong bộ font */
+    color: #333;
+}
+
+.form form .name-details {
+    display: flex; /* gán flex để 2 cái input dàn ngang từ trái sang phải (row) mặc định */
+}
+
+/* Căn tạo khoảng cách giữa 2 input họ và tên */
+
+form .name-details .field:first-child {
+    margin-right: 10px;
+}
+
+form .name-details .field:last-child {
+    margin-left: 10px;
+}
+
+/* ////////////////////////////////////////// */
+
+.form form .field label {
+    display: inline-block;
+    margin-bottom: 2px;
+    font-weight: 600;
+    color: #f37b56;
+    margin-top: 5px;
+}
+
+.form form .field input {
+    outline: none; /* đường viền bao ngoài */ 
+}
+
+.form form .input input {
+    height: 42px;
+    width: 100%; /* chiều rộng của nó cũng chính là chiều rộng của phần tử cha */
+    font-size: 16px;
+    padding: 0 10px;
+    /* border: 1px solid #ccc; */
+    background: none;
+    border: none;
+    border-radius: 5px;
+    border-bottom: 2px solid #74bdb7;
+    color: #53aca4;
+}
+
+.form form .image input {
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+.form form .btn input {
+    margin-top: 12px;
+    height: 42px;
+    border: 2px solid #f37b56;
+    font-size: 18px;
+    font-weight: 600;
+    background: #fff/* #f79577 */;
+    color: #f37b56;
+    border-radius: 5px;
+    cursor: pointer; /* kiểu con trỏ khi di chuột tới button*/
+}
+
+.form form .btn:hover input {
+    background: #da795c;
+    color: #fff;
+    border: none;
+}
+.form .link {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 17px;
+    color:#4c918b;
+}
+
+.form .link a {
+    color:  #0f5c55;
+    font-weight: 600;
+}
+
+.form .link a:hover {
+    text-decoration: underline;
+    color: #da795c;
+    font-weight: 600;
+}
+
+
+/* User Area CSS Code */
+.users {
+    padding: 25px 30px;
+}
+
+.users-list a, 
+.users header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1.5px solid transparent;
+    border-image: linear-gradient(to left, #c5dbdb, #03a8ad);
+    border-image-slice: 1;
+    padding-bottom: 20px;
+}
+
+.wrapper img {
+    object-fit: cover;/*  ảnh sẽ được thu gọn hoặc dãn ra để vừa với khung bao bên ngoài, vẫn giữ nguyên tỷ lệ chiều cao và chiều rộng nhưng khung bao sẽ được lấp đầy, lưu ý ảnh có thể bị cắt bớt một số phần */
+    border-radius: 50%; /* bo hình tròn */
+}
+
+/* :is(.users, .users-list) .content {
+    display: flex;
+} */
+
+.users-list a .content,
+.users header .content {
+    display: flex;
+    align-items: center;
+}
+
+.users header .content img {
+    height: 50px;
+    width: 50px;
+}
+
+/* :is(.users, .users-list) .details {
+    margin-left: 14px;
+} */
+
+.users-list .content .details,
+.users header .details {
+    margin-left: 14px;
+    color: #000;
+}
+
+.users-list .content .details span,
+.users header .details span {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.users header .logout {
+    color: #fff;
+    background-color: #e05126 ;
+    font-size: 17px;
+    border-radius: 5px;
+    padding: 7px 15px;
+}
+
+.users .search {
+    margin: 20px 0;
+    display: flex;
+    position: relative; /* định vị trí tuyệt đối, các thẻ bên trong coi nó là thẻ cha */
+    align-items: center;
+    justify-content: space-between;
+}
+
+.users .search .text {
+    font-size: 18px;
+}
+
+.users .search input {
+    position: absolute; /* định vị trí tương đối theo thẻ cha hoặc thẻ body nếu k khai báo */
+    height: 42px;
+    width: calc(100% - 50px); /* rụt lại khoảng 50px cho button searh */
+    border: 1px solid #e49d87;
+    padding: 0 13px;
+    font-size: 16px;
+    border-radius: 5px;
+    outline: none;
+    opacity: 0; /* cho input trong suốt để ẩn đi input tìm kiếm */
+    pointer-events: none; /* sử dụng để ngăn hàm onclick js chạy */
+    transition: all 0.3s ease; /* xác định quá trình chuyển đổi : all - độ trễ - thay đổi bắt đầu chậm, sau đó tăng dần vận tốc, rồi chậm lại và dừng*/
+}
+
+.users .search input.active {
+    opacity: 1; /* hiện input */
+    pointer-events: auto;
+}
+
+.users .search button {
+    width: 47px;
+    height: 42px; /* = height input */
+    border: none;
+    outline: none;
+    color: #333;
+    background-color: #fff;
+    cursor: pointer;
+    font-size: 17px;
+    border-radius: 0 5px 5px 0;
+}
+
+.users .search button.active {
+    color: #fff;
+    background-color: #f56c43;
+}
+
+.users .search button.active i::before {
+    content: "\f00d";
+}
+
+.users-list {
+    max-height: 350px;
+    overflow-y: auto; /* Tạo scrollbar khi userlist tràn */
+    /* Khi mà nội dung tràn các cạnh trên và dưới của phần tử cấp khối ở đây là users-list */
+}
+
+.chat-box::-webkit-scrollbar,
+.users-list::-webkit-scrollbar {
+    width: 0px; /* Thanh cuộn ẩn */
+}
+.users-list a {
+    padding-right: 15px;
+    margin-bottom: 15px;
+    page-break-after: 10px; /* ngắt trang sau userlist a */
+    border-bottom-color: #f1f1f1;
+}
+
+.users-list a:last-child {
+    border: none;
+    margin-bottom: 0px;
+}
+
+.users-list a .content img {
+    height: 40px;
+    width: 40px;
+}
+
+.users-list a .content p {
+    color:#67676a;
+}
+
+.users-list a .status-dot {
+    font-size: 12px;
+    color: #458669;
+}
+
+/* Dùng lớp này ở php để hiển thị trạng thái offline */
+.users-list a .off {
+    color: #ccc;
+}
+
+/* Chat Area CSS Code */
+.chat-area header {
+    display: flex;
+    align-items: center;
+    padding: 18px 30px;
+}
+
+.chat-area header .back-icon{
+    font-size: 18px;
+    color: #333;
+}
+
+
+.chat-area header img {
+    height: 45px;
+    width: 45px;
+    margin: 0 15px;
+}
+
+.chat-area header span {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.chat-area header p {
+    font-size: 15px;
+    color: rgb(110, 109, 109);
+    font-weight: 500;
+}
+
+.chat-area header .chat-image{
+    margin-left: 20px;
+}
+
+.chat-box {
+    height: 400px;
+    overflow-y: auto; /* Tạo scroll bar để kéo xem tin nhắn */
+    background: #f7f7f7ce;
+    padding: 10px 30px 20px 30px;
+    box-shadow: inset 0 32px 32px -32px rgba(0, 0, 0, 0.05),
+            inset 0 -32px 32px -32px rgba(0, 0, 0, 0.05);   /* Tạo bóng tạo cảm giác khung chat đang nổi  */
+}
+
+.chat-box .chat {
+    margin: 16px 0;
+}
+
+.chat-box .chat p { 
+    word-wrap: break-word; /* những từ quá dài sẽ xuống hàng */
+    padding: 8px 16px;
+    box-shadow: 0 0 32px rgba(0, 0, 0, 0.12),
+            0 16px 16px -16px rgba(0, 0, 0, 0.15);
+}
+.chat-box .outgoing {
+    display: flex;
+}
+
+.outgoing .details {
+    max-width: calc(100% - 130px);
+    margin-left: auto; /* trình duyệt tính toán lề trái và kéo lề details về trái */
+    display: flex;
+    justify-content: space-between;
+} 
+
+.outgoing .details button i{
+    font-size: 16px;
+    color: rgb(67, 117, 92);
+}
+
+.outgoing .details button {
+    border: none;
+    background-color: #f7f7f7ce;
+    margin: 0px 8px;
+}
+
+.outgoing .details p {
+    background: #333;
+    color: #fff;
+    border-radius: 18px 18px 0 18px;
+}
+
+.outgoing .details p img {
+    max-width: 240px;
+    max-height: 240px;
+    border-radius: 0;
+}
+
+
+.chat-box .incoming {
+    display: flex;
+    align-items: flex-end;/* đẩy các phần tử về khu vực cuối hướng chính */
+    /* Để đồng thời đẩy cho img rịch xuống */
+}
+
+
+.chat-box .incoming #ava {
+    height: 36px;
+    width: 36px;
+}
+
+.incoming .details {
+    margin-left: 10px;
+    margin-right: auto;
+    max-width: calc(100% - 130px);
+    display: flex;
+    justify-content: space-between;
+}
+
+.incoming .details p {
+    color: #333;
+    background: #fff;
+    border-radius: 18px 18px 18px 0;
+}
+
+.incoming .details p img {
+    max-width: 240px;
+    max-height: 240px;
+    border-radius: 0;
+    object-fit: cover;
+}
+
+.incoming .details button i{
+    font-size: 16px;
+    color: rgb(67, 117, 92);
+}
+
+.incoming .details button {
+    border: none;
+    background-color: #f7f7f7ce;
+    margin: 0px 8px;
+}
+
+.chat-area .typing-area {
+    padding: 18px 12px 18px 32px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.typing-area input {
+    height: auto;
+    width: calc(100% - 90px); /* Chừa 50px để icon bên phải */
+    font-size: 16px;
+    border: 1px solid #4c918b;
+    padding: 0 13px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    overflow-y: auto;
+    word-wrap: break-word;
+}
+
+.typing-area .send-btn {
+    width: 55px;
+    border: none;
+    outline: none;
+    background-color: #f56c43;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 0 5px 5px 0;
+    margin-left: 4px;
+}
+
+.typing-area label {
+    margin-left: -25px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    height: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
